@@ -12,26 +12,19 @@ class Question:
         return spm
 
     def check_answer(self, your_answer):
-        if your_answer == self.right_answer:
-            print("This is correct")
+        answer = your_answer - 1
+        if answer == int(self.right_answer):
+            return "correct"
 
         else:
-            print("This is in-correct")
+            return "incorrect"
 
     def correct_answer_text(self):
         right_answer_nr = int(self.right_answer)
-        return "Det rette svaret er: " + words[right_answer_nr]
-
-    def points(self, answer_user):
-        point = 0
-        svar = int(self.right_answer)
-        if answer_user == svar:
-            point = 1
-        return point
-
+        answers = self.answer
+        return "The correct answer is: " + answers[right_answer_nr]
 
 if __name__ == "__main__":
-    import math
 
     options = []
     points_player1 = 0
@@ -49,10 +42,8 @@ if __name__ == "__main__":
             print(Q)
             player1_answer = int(input("Player one, choose your answer: "))
             player2_answer = int(input("Player two, choose your answer: "))
-            points_player1 += Q.points(player1_answer)
-            points_player2 += Q.points(player2_answer)
+            print(Q.correct_answer_text())
+            print(f"Player one: {Q.check_answer(player1_answer)}")
+            print(f"Player two: {Q.check_answer(player2_answer)}")
             options.clear()
             print("")
-
-    print(f"The total points racked up py player one is {points_player1}")
-    print(f"The total points racked up py player two is {points_player2}")
