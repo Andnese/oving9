@@ -24,6 +24,7 @@ class Question:
         answers = self.answer
         return "The correct answer is: " + answers[right_answer_nr]
 
+
 if __name__ == "__main__":
 
     options = []
@@ -45,5 +46,11 @@ if __name__ == "__main__":
             print(Q.correct_answer_text())
             print(f"Player one: {Q.check_answer(player1_answer)}")
             print(f"Player two: {Q.check_answer(player2_answer)}")
+            if Q.check_answer(player1_answer) == "correct":
+                points_player1 += 1
+            if Q.check_answer(player2_answer) == "correct":
+                points_player2 += 1
             options.clear()
             print("")
+    print(f" the points of player one is: {points_player1}")
+    print(f" the points of player two is: {points_player2}")
